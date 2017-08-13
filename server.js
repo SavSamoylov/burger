@@ -3,6 +3,8 @@ const xps = require("./xps.js")
 const app = xps.app();
 let routes = require(__dirname + "/controllers/burger-controllers.js")
 
+app.use("/", routes);
+
 xps.go(app,
   {
     viewEngine: "express-handlebars",
@@ -11,7 +13,3 @@ xps.go(app,
     methodOverride: true,
   }
 )
-
-
-
-app.use("/", routes);
