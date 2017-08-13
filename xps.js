@@ -163,10 +163,10 @@ let XPS = function(){
     // Set Favicon
     //==================================================================================================
 
-    if(obj.favicon){
-      app.use(favicon(path.join(__dirname,'public/favicon.ico')))
-      console.log("++ favicon: true")
-    }
+    // if(obj.favicon){
+    //   app.use(favicon(path.join(__dirname,'public/favicon.ico')))
+    //   console.log("++ favicon: true")
+    // }
 
     //==================================================================================================
     // XPS Functions
