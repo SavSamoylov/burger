@@ -5,7 +5,6 @@ const app = xps.app();
 
 xps.go(app,
   {
-    staticView: "public",
     viewEngine: "express-handlebars",
     bodyParse: ["json", "raw", "urlencoded", "text"],
     port: 3000,
