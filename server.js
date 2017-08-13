@@ -1,15 +1,34 @@
-const path = require('path')
-const xps = require("./xps.js")
-const app = xps.app();
+const express = require('express');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const exphbs  = require('express-handlebars');
+
 let routes = require(__dirname + "/controllers/burger-controllers.js")
+
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+// parse various different custom JSON types as JSON
+app.use(bodyParser.json({ type: 'application/*+json' }))
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse some custom thing into a Buffer
+app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
+
+// parse an HTML body into a string
+app.use(bodyParser.text({ type: 'text/html' }))
+
+app.use(methodOverride('_method'));
 
 app.use("/", routes);
 
-xps.go(app,
-  {
-    viewEngine: "express-handlebars",
-    bodyParse: ["json", "raw", "urlencoded", "text"],
-    port: 3000,
-    methodOverride: true,
-  }
-)
+
+app.listen(PORT, ()=>{
+  console.log("Server started on PORT: %s", PORT)
+})
