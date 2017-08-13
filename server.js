@@ -3,8 +3,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const exphbs  = require('express-handlebars');
 
-let routes = require(__dirname + "/controllers/burger-controllers.js")
-
+let routes = require("./controllers/burger-controllers.js")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
