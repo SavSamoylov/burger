@@ -1,7 +1,7 @@
 const path = require('path')
 const xps = require("./xps.js")
 const app = xps.app();
-
+let routes = require(__dirname + "/controllers/burger-controllers.js")
 
 xps.go(app,
   {
@@ -12,6 +12,6 @@ xps.go(app,
   }
 )
 
-let routes = require(__dirname + "/controllers/burger-controllers.js")
+
 
 app.use("/", routes);
