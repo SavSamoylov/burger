@@ -9,8 +9,6 @@ let routes = require(__dirname + "/controllers/burger-controllers.js")
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
@@ -25,6 +23,9 @@ app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
 app.use(bodyParser.text({ type: 'text/html' }))
 
 app.use(methodOverride('_method'));
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use("/", routes);
 
