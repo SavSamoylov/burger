@@ -8,6 +8,7 @@ let routes = require("./controllers/burger-controllers.js")
 let app = express();
 const PORT = process.env.PORT || 3000;
 
+console.log("Server Connected")
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
